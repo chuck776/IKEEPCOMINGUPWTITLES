@@ -16,7 +16,7 @@ body {
 
 .container {
   padding: 16px;
-  padding-bottom: 80px; /* room for navbar */
+  padding-bottom: 100px; /* room for navbar */
 }
 
 .album-cover {
@@ -85,16 +85,31 @@ body {
   border-top: 1px solid #333;
 }
 
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  border-top: 1px solid #333;
+  z-index: 1000; /* Ensure it sits on top */
+}
+
 .nav-item {
   font-size: 1rem;
   color: #aaa;
   text-align: center;
+  flex: 1;
 }
 
 .nav-item.active {
   color: #fff;
   font-weight: bold;
 }
+
 
 .track {
   background-color: #1c1c1c;
@@ -127,4 +142,52 @@ audio {
   font-size: 1.3rem;
   color: #1e90ff;
   text-decoration: none;
+}
+.divider {
+  border: none;
+  border-top: 1px solid #333; /* Feint line */
+  margin: 16px 0;
+  opacity: 0.5;
+}
+/* Equalizer container */
+.equalizer {
+  display: inline-flex;
+  gap: 3px;
+  height: 12px;
+  margin-left: 8px;
+  align-items: end;
+  visibility: hidden;
+}
+
+/* Each bar */
+.bar {
+  width: 2px;
+  background: #1db954;
+  animation: bounce 1s infinite ease-in-out;
+}
+
+/* Different delays for animation */
+.bar:nth-child(1) {
+  animation-delay: 0s;
+}
+.bar:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.bar:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Keyframes */
+@keyframes bounce {
+  0%, 100% {
+    height: 3px;
+  }
+  50% {
+    height: 12px;
+  }
+}
+
+/* When playing */
+.track.playing .equalizer {
+  visibility: visible;
 }
